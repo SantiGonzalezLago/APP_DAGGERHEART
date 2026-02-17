@@ -1,7 +1,7 @@
 {
-  "name": "new-app",
+  "name": "com.santigl.daggerheart",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Santiago González Lago",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",

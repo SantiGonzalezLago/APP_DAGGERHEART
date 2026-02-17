@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'rules.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-item lines="none">
+    <ion-select [value]="activeSection" (ionChange)="onSectionChange($event)">
+      <ion-select-option value="introduction">{{ 'rules.sections.introduction' | translate }}</ion-select-option>
+      <ion-select-option value="characterCreation">{{ 'rules.sections.characterCreation' | translate }}</ion-select-option>
+      <ion-select-option value="coreMaterials">{{ 'rules.sections.coreMaterials' | translate }}</ion-select-option>
+      <ion-select-option value="coreMechanics">{{ 'rules.sections.coreMechanics' | translate }}</ion-select-option>
+      <ion-select-option value="runningAdventure">{{ 'rules.sections.runningAdventure' | translate }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <h1>{{ ('rules.sections.' + activeSection) | translate }}</h1>
+
+  <section class="rules-section" [innerHTML]="activeSectionContent"></section>
+</ion-content>

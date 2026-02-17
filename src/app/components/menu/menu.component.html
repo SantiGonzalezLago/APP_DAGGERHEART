@@ -1,0 +1,148 @@
+<ion-menu side="start" menuId="main-menu" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title class="menu-header">
+        <img class="menu-logo" src="assets/images/dh.png" alt="Daggerheart logo" />
+        <h1 class="main-title">{{ 'common.appName' | translate }}</h1>
+        <p class="app-version">v{{ appVersion }}</p>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list lines="none">
+      <ion-menu-toggle autoHide="true">
+        <ion-item routerLink="/home" routerLinkActive="active" lines="none" button>
+          <ion-label>{{ 'menu.home' | translate }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-item lines="none" button (click)="toggleRulesMenu()">
+        <ion-label>{{ 'rules.title' | translate }}</ion-label>
+        <ion-icon slot="end" [name]="isRulesExpanded ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+      </ion-item>
+
+      <ng-container *ngIf="isRulesExpanded">
+        <ion-menu-toggle autoHide="true">
+          <ion-item
+            class="rules-subitem"
+            [routerLink]="['/rules']"
+            [queryParams]="{ section: 'introduction' }"
+            lines="none"
+            button>
+            <ion-label>{{ 'rules.sections.introduction' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle autoHide="true">
+          <ion-item
+            class="rules-subitem"
+            [routerLink]="['/rules']"
+            [queryParams]="{ section: 'characterCreation' }"
+            lines="none"
+            button>
+            <ion-label>{{ 'rules.sections.characterCreation' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle autoHide="true">
+          <ion-item
+            class="rules-subitem"
+            [routerLink]="['/rules']"
+            [queryParams]="{ section: 'coreMaterials' }"
+            lines="none"
+            button>
+            <ion-label>{{ 'rules.sections.coreMaterials' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle autoHide="true">
+          <ion-item
+            class="rules-subitem"
+            [routerLink]="['/rules']"
+            [queryParams]="{ section: 'coreMechanics' }"
+            lines="none"
+            button>
+            <ion-label>{{ 'rules.sections.coreMechanics' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle autoHide="true">
+          <ion-item
+            class="rules-subitem"
+            [routerLink]="['/rules']"
+            [queryParams]="{ section: 'runningAdventure' }"
+            lines="none"
+            button>
+            <ion-label>{{ 'rules.sections.runningAdventure' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ng-container>
+
+      <ion-item lines="none" button>
+        <ion-label>{{ 'classes.title' | translate }}</ion-label>
+      </ion-item>
+
+      <ion-item lines="none" button (click)="toggleHeritageMenu()">
+        <ion-label>{{ 'heritage.title' | translate }}</ion-label>
+        <ion-icon slot="end" [name]="isHeritageExpanded ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+      </ion-item>
+
+      <ng-container *ngIf="isHeritageExpanded">
+        <ion-item class="rules-subitem" lines="none" button>
+          <ion-label>{{ 'heritage.ancestries' | translate }}</ion-label>
+        </ion-item>
+        <ion-item class="rules-subitem" lines="none" button>
+          <ion-label>{{ 'heritage.communities' | translate }}</ion-label>
+        </ion-item>
+      </ng-container>
+
+      <ion-item lines="none" button>
+        <ion-label>{{ 'abilities.title' | translate }}</ion-label>
+      </ion-item>
+
+      <ion-item lines="none" button (click)="toggleEquipmentMenu()">
+        <ion-label>{{ 'equipment.title' | translate }}</ion-label>
+        <ion-icon slot="end" [name]="isEquipmentExpanded ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+      </ion-item>
+
+      <ng-container *ngIf="isEquipmentExpanded">
+        <ion-item class="rules-subitem" lines="none" button>
+          <ion-label>{{ 'equipment.weapons' | translate }}</ion-label>
+        </ion-item>
+        <ion-item class="rules-subitem" lines="none" button>
+          <ion-label>{{ 'equipment.armor' | translate }}</ion-label>
+        </ion-item>
+        <ion-item class="rules-subitem" lines="none" button>
+          <ion-label>{{ 'equipment.items' | translate }}</ion-label>
+        </ion-item>
+      </ng-container>
+
+      <ion-item lines="none" button (click)="toggleGmContentMenu()">
+        <ion-label>{{ 'gmContent.title' | translate }}</ion-label>
+        <ion-icon slot="end" [name]="isGmContentExpanded ? 'chevron-down-outline' : 'chevron-forward-outline'"></ion-icon>
+      </ion-item>
+
+      <ng-container *ngIf="isGmContentExpanded">
+        <ion-item class="rules-subitem" lines="none" button>
+          <ion-label>{{ 'gmContent.environments' | translate }}</ion-label>
+        </ion-item>
+        <ion-item class="rules-subitem" lines="none" button>
+          <ion-label>{{ 'gmContent.adversaries' | translate }}</ion-label>
+        </ion-item>
+      </ng-container>
+
+    </ion-list>
+
+    <ion-list lines="none">
+      <ion-item lines="full" button (click)="openLanguageSelector()">
+        <ion-label>{{ 'common.language' | translate }}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div class="menu-footer">
+      <img class="menu-footer-logo" src="assets/images/dh_compatible.png" alt="Daggerheart compatible" />
+      <p class="menu-license-text" [innerHTML]="'menu.licenseNotice' | translate : licenseNoticeParams"></p>
+      <app-kofi-support-card></app-kofi-support-card>
+    </div>
+  </ion-content>
+</ion-menu>

@@ -1,0 +1,54 @@
+{
+  "menu": {
+    "title": "Menú",
+    "home": "Inicio",
+    "help": "Ayuda",
+    "licenseNotice": "Este producto incluye materiales del Documento de Referencia del Sistema Daggerheart 1.0, © Critical Role, LLC, bajo los términos de la licencia Darrington Press Community Gaming (DPCGL). Puedes encontrar más información en {{link}}."
+  },
+  "home": {
+    "title": "Inicio"
+  },
+  "common": {
+    "appName": "Compañero de Daggerheart",
+    "language": "Idioma",
+    "system": "Por defecto del sistema",
+    "spanish": "Español",
+    "galician": "Galego",
+    "english": "English"
+  },
+  "kofi": {
+    "support": "¡Apoya la app en Ko-fi!"
+  },
+  "rules": {
+    "title": "Reglas",
+    "sections": {
+      "introduction": "Introducción",
+      "characterCreation": "Creación de personaje",
+      "coreMaterials": "Materiales básicos",
+      "coreMechanics": "Mecánicas básicas",
+      "runningAdventure": "Dirigir una aventura"
+    }
+  },
+  "classes": {
+    "title": "Clases"
+  },
+  "heritage": {
+    "title": "Herencia",
+    "ancestries": "Linajes",
+    "communities": "Comunidades"
+  },
+  "abilities": {
+    "title": "Habilidades"
+  },
+  "equipment": {
+    "title": "Equipamiento",
+    "weapons": "Armas",
+    "armor": "Armaduras",
+    "items": "Objetos"
+  },
+  "gmContent": {
+    "title": "Contenido para GM",
+    "environments": "Entornos",
+    "adversaries": "Adversarios"
+  }
+}
