@@ -11,6 +11,7 @@
   "common": {
     "appName": "Compañero de Daggerheart",
     "language": "Idioma",
+    "cancel": "Cancelar",
     "system": "Por defecto del sistema",
     "spanish": "Español",
     "galician": "Galego",
@@ -21,12 +22,63 @@
   },
   "rules": {
     "title": "Reglas",
+    "toc": "Tabla de Contenidos",
+    "searchPlaceholder": "Buscar en esta sección",
+    "noResults": "No se han encontrado coincidencias.",
+    "previousOccurrence": "Coincidencia anterior",
+    "nextOccurrence": "Siguiente coincidencia",
     "sections": {
       "introduction": "Introducción",
-      "characterCreation": "Creación de personaje",
-      "coreMaterials": "Materiales básicos",
-      "coreMechanics": "Mecánicas básicas",
-      "runningAdventure": "Dirigir una aventura"
+      "characterCreation": "Creación de Personaje",
+      "coreMaterials": "Materiales Básicos",
+      "coreMechanics": "Mecánicas Básicas",
+      "runningAdventure": "Dirigir una Aventura",
+      "appendix": "Apéndice"
+    },
+    "introductionHeadings": {
+      "whatIsThis": "¿Qué es esto?",
+      "theBasics": "Lo básico"
+    },
+    "coreMaterialsHeadings": {
+      "domains": "Dominios",
+      "classes": "Clases",
+      "ancestries": "Linajes",
+      "communities": "Comunidades"
+    },
+    "coreMechanicsHeadings": {
+      "flowOfTheGame": "Flujo del Juego",
+      "coreGameplayLoop": "Bucle Principal de Juego",
+      "theSpotlight": "El Foco",
+      "turnOrderAndActionEconomy": "Orden de Turno y Economía de Acciones",
+      "makingMovesAndTakingAction": "Realizar Movimientos y Tomar Acción",
+      "combat": "Combate",
+      "stress": "Estrés",
+      "attacking": "Atacar",
+      "mapsRangeAndMovement": "Mapas, Alcance y Movimiento",
+      "conditions": "Condiciones",
+      "downtime": "Tiempo de Inactividad",
+      "death": "Muerte",
+      "additionalRules": "Reglas Adicionales",
+      "levelingUp": "Subir de Nivel",
+      "multiclassing": "Multiclase",
+      "equipment": "Equipamiento",
+      "weapons": "Armas",
+      "combatWheelchair": "Silla de Combate",
+      "armor": "Armadura",
+      "loot": "Botín",
+      "consumables": "Consumibles",
+      "gold": "Oro"
+    },
+    "runningAdventureHeadings": {
+      "gmGuidance": "Guía para el GM",
+      "coreGmMechanics": "Mecánicas Básicas del GM",
+      "adversariesAndEnvironments": "Adversarios y Entornos",
+      "environments": "Entornos",
+      "additionalGmGuidance": "Guía Adicional para el GM",
+      "campaignFrames": "Marcos de Campaña"
+    },
+    "appendixHeadings": {
+      "domainCardReference": "Referencia de Cartas de Dominio"
     }
   },
   "classes": {
@@ -49,6 +101,7 @@
   "gmContent": {
     "title": "Contenido para GM",
     "environments": "Entornos",
+    "frames": "Marcos de Campaña",
     "adversaries": "Adversarios"
   }
 }

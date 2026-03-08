@@ -67,7 +67,7 @@ export class MenuComponent implements OnInit {
       buttons: [
         ...buttons,
         {
-          text: 'Cancelar',
+          text: this.i18nService.instant('common.cancel'),
           role: 'cancel'
         }
       ]

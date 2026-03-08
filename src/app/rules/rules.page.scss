@@ -2,11 +2,108 @@
   display: block;
 }
 
-ion-item {
-  --background: var(--ion-color-step-50);
-  --border-radius: 12px;
-  --padding-start: 12px;
-  --inner-padding-end: 8px;
+ion-content {
+  --padding-bottom: calc(env(safe-area-inset-bottom) + 2.5rem);
+}
+
+ion-content::part(scroll) {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 2.5rem);
+}
+
+.toc {
+  margin: 0.5rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.toc-toggle {
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--ion-color-medium-shade);
+  padding: 0.18rem 0;
+  font: inherit;
+  font-size: inherit;
+  line-height: 1.35;
+  min-height: 36px;
+}
+
+.toc-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.toc-link {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: var(--ion-text-color);
+  padding: 0.18rem 0;
+  font-size: inherit;
+  line-height: 1.35;
+  min-height: 36px;
+}
+
+.toc-link-section {
+  font-weight: 600;
+}
+
+.toc-sublist {
+  margin: 0 0 0.1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.toc-link-heading {
+  color: var(--ion-color-medium-shade);
+}
+
+.toc-link.active {
+  color: #0087ff;
+}
+
+.search-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--ion-background-color);
+  border-bottom: 1px solid var(--ion-color-step-150);
+}
+
+.search-controls {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.search-controls ion-searchbar {
+  flex: 1;
+  padding: 0;
+}
+
+.search-navigation {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.search-count {
+  min-width: 3.25rem;
+  text-align: right;
+  color: var(--ion-color-medium);
+  font-size: 0.875rem;
+}
+
+.content-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 h1 {
@@ -14,7 +111,12 @@ h1 {
   font-variant-caps: small-caps;
   letter-spacing: 0.04em;
   line-height: 1.2;
-  color: #c221e2;
+  color: #0087ff;
+}
+
+.no-results {
+  margin: 0.25rem 0 0.75rem;
+  color: var(--ion-color-medium);
 }
 
 .rules-section {
@@ -22,6 +124,7 @@ h1 {
   max-width: 80ch;
   line-height: 1.6;
   color: var(--ion-color-step-850);
+  padding-bottom: 1.5rem;
 }
 
 :host ::ng-deep .rules-section article {
@@ -30,26 +133,45 @@ h1 {
 
 :host ::ng-deep .rules-section h2 {
   margin: 1.75rem 0 0.6rem;
-  font-size: 1.35rem;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.04em;
   padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--ion-color-step-200);
-  color: #c221e2;
+  color: #0087ff;
 }
 
 :host ::ng-deep .rules-section h3 {
   margin: 1rem 0 0.45rem;
-  font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.02em;
-  color: #c221e2;
+  color: #0087ff;
+}
+
+:host ::ng-deep .rules-section h3.domain-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+:host ::ng-deep .rules-section h3.domain-heading img {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
 }
 
 :host ::ng-deep .rules-section p {
   margin: 0 0 0.9rem;
+}
+
+:host ::ng-deep .rules-section .notes-block {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--ion-color-tertiary);
+  background: #22135f;
+  font-style: italic;
 }
 
 :host ::ng-deep .rules-section ul,
@@ -63,6 +185,39 @@ h1 {
 }
 
 :host ::ng-deep .rules-section a {
-  color: #c221e2;
+  color: #0087ff;
   text-underline-offset: 2px;
+}
+
+:host ::ng-deep .rules-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+  border: 1px solid #2a2532;
+}
+
+:host ::ng-deep .rules-section th,
+:host ::ng-deep .rules-section td {
+  border: 1px solid #2a2532;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5rem 0.6rem;
+}
+
+:host ::ng-deep .rules-section th {
+  font-weight: 700;
+  background: #0087ff;
+  color: var(--ion-color-primary-contrast);
+}
+
+:host ::ng-deep .rules-section mark.rules-highlight {
+  background-color: var(--ion-color-warning-tint);
+  color: var(--ion-color-primary-contrast);
+  padding: 0 0.1em;
+  border-radius: 0.2em;
+}
+
+:host ::ng-deep .rules-section mark.rules-highlight.rules-highlight-current {
+  background-color: #ff8c00;
+  color: var(--ion-color-primary-contrast);
 }

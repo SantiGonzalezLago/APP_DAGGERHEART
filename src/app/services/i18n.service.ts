@@ -40,19 +40,13 @@ export class I18nService {
   }
 
   private getBrowserLanguage(): string | null {
-    // navigator.languages es un array ordenado por preferencia del usuario
     const browserLanguages = navigator.languages || [navigator.language];
-    console.log('Browser languages:', browserLanguages);
-    
     for (const lang of browserLanguages) {
       const part = lang.split('-')[0];
-      
-      // Solo intentar la primera parte del idioma (ej: "es" de "es-ES")
       if (this.availableLanguages.includes(part)) {
         return part;
       }
     }
-    
     return null;
   }
 
@@ -66,7 +60,7 @@ export class I18nService {
       localStorage.removeItem('language');
       const browserLang = this.getBrowserLanguage();
       const langToUse = browserLang || this.defaultLanguage;
-      
+
       if (this.translations[langToUse]) {
         this.currentLanguage.next(langToUse);
         return new Observable(observer => {
@@ -74,7 +68,7 @@ export class I18nService {
           observer.complete();
         });
       }
-      
+
       return this.loadLanguage(langToUse).pipe(
         map(() => {
           this.currentLanguage.next(langToUse);
@@ -124,9 +118,9 @@ export class I18nService {
   private getTranslation(key: string, params?: { [key: string]: string }): string {
     const language = this.currentLanguage.value;
     const translations = this.translations[language] || {};
-    
+
     let translation = this.getNestedTranslation(translations, key);
-    
+
     if (!translation) {
       const fallbackTranslations = this.translations['es'] || {};
       translation = this.getNestedTranslation(fallbackTranslations, key);

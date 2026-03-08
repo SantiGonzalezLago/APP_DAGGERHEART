@@ -11,6 +11,7 @@
   "common": {
     "appName": "Daggerheart Companion",
     "language": "Language",
+    "cancel": "Cancel",
     "system": "System default",
     "spanish": "Español",
     "galician": "Galego",
@@ -21,12 +22,63 @@
   },
   "rules": {
     "title": "Rules",
+    "toc": "Table of Contents",
+    "searchPlaceholder": "Search in this section",
+    "noResults": "No matches found.",
+    "previousOccurrence": "Previous occurrence",
+    "nextOccurrence": "Next occurrence",
     "sections": {
       "introduction": "Introduction",
       "characterCreation": "Character Creation",
       "coreMaterials": "Core Materials",
       "coreMechanics": "Core Mechanics",
-      "runningAdventure": "Running an Adventure"
+      "runningAdventure": "Running an Adventure",
+      "appendix": "Appendix"
+    },
+    "introductionHeadings": {
+      "whatIsThis": "What is this?",
+      "theBasics": "The basics"
+    },
+    "coreMaterialsHeadings": {
+      "domains": "Domains",
+      "classes": "Classes",
+      "ancestries": "Ancestries",
+      "communities": "Communities"
+    },
+    "coreMechanicsHeadings": {
+      "flowOfTheGame": "Flow of the Game",
+      "coreGameplayLoop": "Core Gameplay Loop",
+      "theSpotlight": "The Spotlight",
+      "turnOrderAndActionEconomy": "Turn Order and Action Economy",
+      "makingMovesAndTakingAction": "Making Moves and Taking Action",
+      "combat": "Combat",
+      "stress": "Stress",
+      "attacking": "Attacking",
+      "mapsRangeAndMovement": "Maps, Range, and Movement",
+      "conditions": "Conditions",
+      "downtime": "Downtime",
+      "death": "Death",
+      "additionalRules": "Additional Rules",
+      "levelingUp": "Leveling Up",
+      "multiclassing": "Multiclassing",
+      "equipment": "Equipment",
+      "weapons": "Weapons",
+      "combatWheelchair": "Combat Wheelchair",
+      "armor": "Armor",
+      "loot": "Loot",
+      "consumables": "Consumables",
+      "gold": "Gold"
+    },
+    "runningAdventureHeadings": {
+      "gmGuidance": "GM Guidance",
+      "coreGmMechanics": "Core GM Mechanics",
+      "adversariesAndEnvironments": "Adversaries and Environments",
+      "environments": "Environments",
+      "additionalGmGuidance": "Additional GM Guidance",
+      "campaignFrames": "Campaign Frames"
+    },
+    "appendixHeadings": {
+      "domainCardReference": "Domain Card Reference"
     }
   },
   "classes": {
@@ -49,6 +101,7 @@
   "gmContent": {
     "title": "GM Content",
     "environments": "Environments",
+    "frames": "Frames",
     "adversaries": "Adversaries"
   }
 }

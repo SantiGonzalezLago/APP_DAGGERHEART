@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -7,18 +10,85 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-item lines="none">
-    <ion-select [value]="activeSection" (ionChange)="onSectionChange($event)">
-      <ion-select-option value="introduction">{{ 'rules.sections.introduction' | translate }}</ion-select-option>
-      <ion-select-option value="characterCreation">{{ 'rules.sections.characterCreation' | translate }}</ion-select-option>
-      <ion-select-option value="coreMaterials">{{ 'rules.sections.coreMaterials' | translate }}</ion-select-option>
-      <ion-select-option value="coreMechanics">{{ 'rules.sections.coreMechanics' | translate }}</ion-select-option>
-      <ion-select-option value="runningAdventure">{{ 'rules.sections.runningAdventure' | translate }}</ion-select-option>
-    </ion-select>
-  </ion-item>
+<ion-content [fullscreen]="true">
+  <nav class="toc content-padding" aria-label="Rules table of contents">
+    <button
+      class="toc-toggle"
+      type="button"
+      (click)="toggleToc()"
+      [attr.aria-expanded]="!isTocCollapsed"
+      aria-label="Toggle table of contents"
+    >
+      <span class="toc-toggle-current">{{ ('rules.toc') | translate }}</span>
+      <ion-icon [name]="isTocCollapsed ? 'chevron-down-outline' : 'chevron-up-outline'"></ion-icon>
+    </button>
 
-  <h1>{{ ('rules.sections.' + activeSection) | translate }}</h1>
+    <div class="toc-list" *ngIf="!isTocCollapsed">
+      <ng-container *ngFor="let section of tocSections">
+        <button
+          class="toc-link toc-link-section"
+          type="button"
+          [class.active]="activeSection === section.section"
+          (click)="onTocSelect(section.section)"
+        >
+          {{ section.labelKey | translate }}
+        </button>
 
-  <section class="rules-section" [innerHTML]="activeSectionContent"></section>
+        <div class="toc-sublist" *ngIf="section.headings.length">
+          <button
+            class="toc-link toc-link-heading"
+            type="button"
+            *ngFor="let heading of section.headings"
+            (click)="onTocSelect(section.section, heading.id)"
+          >
+            {{ heading.titleKey | translate }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </nav>
+
+  <div class="search-sticky">
+    <div class="search-controls">
+      <ion-searchbar
+        [value]="searchQuery"
+        (ionInput)="onSearchChange($event)"
+        (keydown)="onSearchKeydown($event)"
+        [placeholder]="'rules.searchPlaceholder' | translate"
+        show-clear-button="focus"
+      ></ion-searchbar>
+
+      <div class="search-navigation" *ngIf="searchQuery">
+        <span class="search-count" *ngIf="hasSearchResults">
+          {{ currentMatchIndex + 1 }} / {{ totalMatches }}
+        </span>
+        <ion-button
+          fill="clear"
+          size="small"
+          [disabled]="!hasSearchResults"
+          [attr.aria-label]="'rules.previousOccurrence' | translate"
+          (click)="goToPreviousMatch()"
+        >
+          <ion-icon slot="icon-only" name="chevron-up-outline"></ion-icon>
+        </ion-button>
+        <ion-button
+          fill="clear"
+          size="small"
+          [disabled]="!hasSearchResults"
+          [attr.aria-label]="'rules.nextOccurrence' | translate"
+          (click)="goToNextMatch()"
+        >
+          <ion-icon slot="icon-only" name="chevron-down-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <p class="no-results content-padding" *ngIf="searchQuery && !hasSearchResults">
+    {{ 'rules.noResults' | translate }}
+  </p>
+
+  <h1 class="content-padding">{{ ('rules.sections.' + activeSection) | translate }}</h1>
+
+  <section #rulesSection class="rules-section content-padding" [innerHTML]="activeSectionContent"></section>
 </ion-content>

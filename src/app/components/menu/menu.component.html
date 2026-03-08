@@ -76,6 +76,17 @@
             <ion-label>{{ 'rules.sections.runningAdventure' | translate }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
+
+        <ion-menu-toggle autoHide="true">
+          <ion-item
+            class="rules-subitem"
+            [routerLink]="['/rules']"
+            [queryParams]="{ section: 'appendix' }"
+            lines="none"
+            button>
+            <ion-label>{{ 'rules.sections.appendix' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ng-container>
 
       <ion-item lines="none" button>
@@ -127,6 +138,9 @@
           <ion-label>{{ 'gmContent.environments' | translate }}</ion-label>
         </ion-item>
         <ion-item class="rules-subitem" lines="none" button>
+          <ion-label>{{ 'gmContent.frames' | translate }}</ion-label>
+        </ion-item>
+        <ion-item class="rules-subitem" lines="none" button>
           <ion-label>{{ 'gmContent.adversaries' | translate }}</ion-label>
         </ion-item>
       </ng-container>
@@ -134,7 +148,7 @@
     </ion-list>
 
     <ion-list lines="none">
-      <ion-item lines="full" button (click)="openLanguageSelector()">
+      <ion-item class="language-button" lines="full" button (click)="openLanguageSelector()">
         <ion-label>{{ 'common.language' | translate }}</ion-label>
       </ion-item>
     </ion-list>
